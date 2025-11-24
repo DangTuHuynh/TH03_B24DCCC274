@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body,#root { height: 100%; font-family: Inter, "Segoe UI", Roboto, Arial; background: #f6f8fb; color: #0f1724; }
+
+.app-container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(17,24,39,0.06);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page-title {
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+  color: #0b1117;
+  letter-spacing: 0.2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-input {
+  flex: 1 1 320px;
+  min-width: 200px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ef;
+  background: #fff;
+  outline: none;
+  transition: box-shadow .12s, border-color .12s;
+}
+.search-input:focus { box-shadow: 0 2px 8px rgba(2,6,23,0.06); border-color: #cbd5e1; }
+
+.filter-wrap {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.select, .number-input {
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ef;
+  background: #fff;
+  min-width: 140px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+@media (max-width: 960px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .controls { flex-direction: column; align-items: stretch; }
+  .product-grid { grid-template-columns: 1fr; }
+}
+
+.product-card {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border: 1px solid #eef2f6;
+  box-shadow: 0 4px 14px rgba(11,15,25,0.03);
+  transition: transform .12s, box-shadow .12s;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(11,15,25,0.06); }
+
+.product-title { font-weight: 600; font-size: 1.05rem; color: #091022; }
+.product-meta { font-size: .9rem; color: #4b5563; }
+.product-price { font-weight: 700; color: #0f5132; }
+
+.card-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .9rem;
+  transition: transform .08s, opacity .08s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-ghost {
+  background: transparent;
+  color: #0b1220;
+  border: 1px solid #e6e9ef;
+}
+.btn-primary {
+  background: #0ea5a4;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(14,165,164,0.12);
+}
+.btn-danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.detail {
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #eef2f6;
+  background: #fff;
+}
+.detail-row { margin-bottom: 8px; color: #344054; }
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 720px) { .form { grid-template-columns: 1fr; } }
+
+.form .full { grid-column: 1 / -1; }
+
+.input, .textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ef;
+  outline: none;
+}
+.textarea { min-height: 100px; resize: vertical; }
+
+.error {
+  color: #b91c1c;
+  font-size: .85rem;
+  margin-top: 6px;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 8px;
 }
+.page-indicator { font-weight: 600; color: #475569; }
 
-.App-link {
-  color: #61dafb;
-}
+.kv { color: #475569; font-size: .95rem; }
+.muted { color: #94a3b8; font-size: .9rem; }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.summary {
+  display:flex;
+  justify-content: space-between; 
+  align-items:center;
+  padding: 10px 6px;
+  color: #475569;
+  font-size: .95rem;
 }
